@@ -1,13 +1,6 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
 
-
-       if(k==1)
-        if(nums.length == k)
-        {
-            return nums;
-        }
-
         HashMap<Integer,Integer> hm=new HashMap<>();
 
         for(int i=0;i<nums.length;i++){
@@ -23,16 +16,40 @@ class Solution {
         }
       
       int i=0;
-       PriorityQueue<Integer> pq= new PriorityQueue<>();
+
+     // Pair <Integer,Integer> pair = new Pair<>(Integer key, Integer value)
+       
+        PriorityQueue<Pair<Integer,Integer>> pq= new PriorityQueue<>(Comparator.comparing(Pair ::getValue ));
+
        for(Integer key:hm.keySet())
        {
            int val=hm.get(key);
            if(i<k)
            {
-            pq.add(hm.)
+            pq.add(new Pair<>(key,val));
            }
-
+           else if(val>pq.peek().getValue())
+           {
+               pq.remove();
+               pq.add(new Pair<>(key,val));
+               
+           }
+           i++;
        }
+
+       int[] ans=new int[k];
+       
+       int j=0;
+       while(pq.size()>0)
+       {
+        Pair p = pq.remove();
+        ans[j]=(int)p.getKey();
+        j++;
+       }
+               
+           
+
+       
 
 
         //  int[] arr=new int[count];
@@ -47,6 +64,6 @@ class Solution {
         //    p++;
         // }
         
-        return arr;
+        return ans;
     }
 }
