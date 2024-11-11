@@ -1,0 +1,29 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+  
+	   String str = sc.nextLine();
+	   
+	   printSS(str,"");
+	   
+	}
+	
+	
+	public static void printSS(String ques, String ans)
+	{
+	    if(ques.length() == 0){
+	        System.out.print(ans+" ");
+	        return;
+	    }
+	    
+	    char ch = ques.charAt(0);
+	    String roq= ques.substring(1); //rest of String
+	    
+	    printSS(roq,ans+ch);           //call for yes   , there is no faith
+	    printSS(roq,ans+"");           //call for no
+	    
+	}
+}

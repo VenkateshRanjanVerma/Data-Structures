@@ -1,0 +1,24 @@
+import java.util.*;
+class displayReverseArray
+{
+public static void main(Sting[] args) throws Exception
+{
+
+	Scanner sc = new Scanner(System.in);
+	int n=sc.nextInt();
+	int[] arr=new int[n];
+
+	for(int i=0;i<n;i++)
+	{
+	  arr[i] = sc.nextInt();
+	}
+
+	da(arr,0);
+
+}
+
+
+public static void da(int[] arr, idx)
+{
+	da(arr,1);
+	System.out.print(arr[idx-1]);2

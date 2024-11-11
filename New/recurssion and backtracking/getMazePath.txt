@@ -1,0 +1,66 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	
+	System.out.print("Enter destination row:");
+	int m = sc.nextInt();
+	
+	System.out.print("Enter destination col:");
+	int n = sc.nextInt();
+	
+	ArrayList<String> answer = getMazePath(1,1,m,n);
+	
+    System.out.print(answer);
+	
+	}
+	
+	
+	
+	
+	public static ArrayList<String> getMazePath(int sr, int sc, int dr, int dc)
+	{   
+	   
+	    
+	    
+	    ArrayList<String> hpaths=new ArrayList<>();
+	    ArrayList<String> vpaths=new ArrayList<>();
+	    
+	     if(sr==dr && sc==dc){
+	        ArrayList<String> bres=new ArrayList<>();
+	        bres.add("");
+	        return bres;
+	    }
+	    
+	    if(sc<dc)
+	    {
+	        hpaths = getMazePath(sr,sc+1,dr,dc);   //fatih1: it wil return all the paths intermediatory sc+1 to dc
+	    }
+	    
+	    
+	    if(sr<dr)
+	    {
+	        vpaths = getMazePath(sr+1, sc, dr,dc);   //fatih2
+	    }
+	    
+	    ArrayList<String> paths = new ArrayList<>();
+	    
+	    for(String val:hpaths){
+	        paths.add("h"+val);
+	    }
+	    
+	     for(String val:vpaths){
+	        paths.add("v"+val);
+	    }
+	    
+	    return paths;
+	}
+}

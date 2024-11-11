@@ -1,0 +1,59 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class HelloWorld {
+  
+  
+  public static void main(String args[])
+  {
+  
+  int[] arr={ 2,5,9,1,12,6,8,7};
+  int[] ans = new int[arr.length];
+   
+  Stack<Integer> st = new Stack<>();
+  
+  st.push(arr[arr.length-1]);
+  
+  for(int i=2*arr.length-1 ; i>=0; i--)
+  {
+      int i_modified = i%arr.length;
+      
+      while(st.size()>0 && st.peek() <= arr[i_modified] )
+      {
+          st.pop();
+      }
+      
+      if(i<arr.length)
+      {
+             if(st.size()==0)
+                {
+                    ans[i_modified] = -1;
+                  }
+              else
+                {
+                    ans[i_modified] = st.peek();
+               }
+      }
+   
+      
+      st.push(arr[i_modified]);
+      
+  }
+  
+  
+    for(int val:ans)
+    {
+        System.out.print(val+",");
+    }
+  
+  }
+  
+  
+  
+}
+
+
+java -cp /tmp/M7bIgzPRoP/HelloWorld
+5,9,12,12,-1,8,9,9,
+=== Code Execution Successful ===

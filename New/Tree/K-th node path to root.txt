@@ -1,0 +1,192 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class HelloWorld {
+  
+  static class Node{
+      int data;
+      Node left;
+      Node right;
+      
+      Node(int d){
+          data = d;
+          right =null;
+          left = null;
+      }
+  }
+  
+  public static void main(String args[])
+  { 
+      Node root = new Node(10);
+      root.left = new Node(20);
+      root.right = new Node(30);
+      root.left.left = new Node(40);
+      root.left.right = new Node(50);
+      root.left.right.left = new Node(70);
+      root.left.right.right = new Node(80);
+      root.right.right = new Node(60);
+      
+      int search_item = 40;
+      ArrayList<Integer> path = new ArrayList<>();
+      boolean check = nodepath(root,search_item, path);
+      
+      
+      if(check)
+      {
+          System.out.println("True");
+          for(int val:path)
+          {
+              System.out.print(val+",");
+          }
+      }
+      else{
+          System.out.print("False");
+      }
+   }
+   
+    // Given node to root path
+    
+
+   public static boolean nodepath(Node node ,int item, ArrayList<Integer> path)
+ {
+     if(node.data == item)
+     {
+         path.add(node.data);
+         return true;
+     }
+     
+     //Faith-1 : faith rakho ki left hame search kar ke de dega
+     Boolean check_left = nodepath(node.left, item, path);
+     {
+         if(check_left == true)
+         {
+             path.add(node.data);
+             return true;
+         }
+     }
+     
+      Boolean check_right = nodepath(node.right, item, path);
+     {
+         if(check_left == true)
+         {
+             path.add(node.data);
+             return true;
+         }
+     }
+     
+    return false;
+     
+     
+ }
+   
+
+   
+   
+  
+  }
+
+
+----------------
+java -cp /tmp/7kfk3bkcx1/HelloWorld
+True
+40,20,10,
+=== Code Execution Successful ===
+
+
+
+
+---------------------------------------------------Revision----------------
+
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class RootoNodePath {
+    
+    static class Node
+    {
+        int data;
+        Node left;
+        Node right;
+        
+        Node(int d){
+            data = d;
+        }
+    }
+    
+    
+    public static void main(String[] str)
+    {
+      Node root = new Node(10);
+      root.left = new Node(20);
+      root.right = new Node(30);
+      root.left.left = new Node(40);
+      root.left.right = new Node(50);
+      root.left.right.left = new Node(70);
+      root.left.right.right = new Node(80);
+      root.right.right = new Node(60);
+      
+      ArrayList<Integer> path = new ArrayList<>();
+      boolean check = printknodepath(root,50,path);
+      
+      if(check)
+      {
+          for(int val:path)
+          {
+              System.out.print(val + ",");
+          }
+      }
+      else{
+          System.out.println("entered key not found");
+      }
+    }
+    
+//        10
+//       /  \
+//      20    30
+//     /  \     \
+//   40    50    60
+//         / \
+//       70   80
+    
+    
+    
+    public static boolean printknodepath(Node root,int key,ArrayList<Integer> path)
+    {
+        //which DFS: root left right (preorder)
+        //start
+        if(root == null)
+        {
+            return false;
+        }
+        
+         if(root.data == key){     
+             path.add(root.data);
+             return true;
+         }
+         
+        boolean check_left =  printknodepath(root.left, key, path);
+        if(check_left == true)
+        {
+            path.add(root.data);
+            return true;         // taki iska bhi parent include ho jai
+        }
+        
+        boolean check_right =  printknodepath(root.right, key,path);
+         if(check_right == true)
+        {
+            path.add(root.data);
+            return true;         // taki iska bhi parent include ho jai
+        }
+        
+        
+        return false;
+        
+    }
+    
+    
+}

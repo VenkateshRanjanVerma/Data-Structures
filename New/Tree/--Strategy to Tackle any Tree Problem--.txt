@@ -1,0 +1,5 @@
+1. whatever output you want to achieve, think which traversal you can use in DFS
+
+2. START writing the code towards that DFS and build your logic and complete it
+
+3. While writing each block of the code, imagine that you at any mid of the node, and socho ki us node se left call lag gaya (now include a dot in that node in your imagination) and like this you complete your code by imagining dots of complition as line of recurisive calls, if condition.... (jesa Sumit sir dry run karate the)

@@ -1,0 +1,37 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class HelloWorld {
+   
+   
+   public static void main(String[] args)
+   {
+     
+     PriorityQueue<Integer> pq = new PriorityQueue<>(); // by default low priority is set
+     PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+     
+     // add -> log(n)
+     //remove -> log(n)
+     //peek  -> o(1);
+     
+     int[] arr = {9,7,4,8,2,5,1};
+     
+     int i=0;
+     while(i<arr.length)
+     {
+     pq.add(arr[i]);
+     i++;
+     }
+       
+    while(pq.size()>0)
+    {
+        System.out.print(pq.remove()+"\n");
+    }
+       
+   }
+   
+  
+   
+       
+}
