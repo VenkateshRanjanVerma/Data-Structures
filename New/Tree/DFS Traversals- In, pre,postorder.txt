@@ -155,3 +155,104 @@ class TreeRevision {
         InorderTraversal(root.right);
     }
 }
+
+
+
+
+---------------------------------------------
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class aditya
+{
+    static class Node
+    {
+        int val;
+        Node left;
+        Node right;
+        
+        Node (int d)
+        {
+            val = d;
+            
+        }
+    }
+    
+    public static void main(String[] arg)
+    {
+        Node root = new Node(10);
+         root.left = new Node(20);
+         root.right = new Node(30);
+         root.left.left = new Node(40);
+         root.right.right = new Node(50);
+        
+        //pre-order  -- root left right
+        
+        System.out.println("preorder");
+        preorder(root);
+        
+        //inorder  --  left root right
+        System.out.println("inorder");
+        inorder(root);
+        
+        //postorder  --  left right root
+        System.out.println("postorder");
+        postorder(root);
+    }
+    
+    public static void preorder(Node root){
+        if(root == null)
+        {
+            return;
+        }
+        
+        System.out.println(root.val);
+        preorder(root.left);
+        postorder(root.right);
+    }
+    
+    
+        public static void inorder(Node root){
+        if(root == null)
+        {
+            return;
+        }
+         inorder(root.left);
+        System.out.println(root.val);
+         inorder(root.right);
+    }
+    
+        public static void postorder(Node root){
+         if(root == null)
+        {
+            return;
+        }
+        inorder(root.left);
+        inorder(root.right);
+        System.out.println(root.val);
+        
+    }
+}
+
+preorder
+10
+20
+40
+50
+30
+inorder
+40
+20
+10
+30
+50
+postorder
+40
+20
+30
+50
+10
+
+=== Code Execution Successful ===
