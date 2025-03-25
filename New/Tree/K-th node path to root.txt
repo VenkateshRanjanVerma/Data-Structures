@@ -190,3 +190,90 @@ class RootoNodePath {
     
     
 }
+
+
+
+
+
+-----------------------------------------------Revision-------------------------------
+
+
+
+
+import java.util.*;
+class HelloWorld {
+  
+  static class Node{
+      int val;
+      Node left;
+      Node right;
+      
+      Node(int d){
+          val = d;
+          right =null;
+          left = null;
+      }
+  }
+  
+  public static void main(String args[])
+  { 
+      Node root = new Node(10);
+      root.left = new Node(20);
+      root.right = new Node(30);
+      root.left.left = new Node(40);
+      root.left.right = new Node(50);
+      root.left.right.left = new Node(70);
+      root.left.right.right = new Node(80);
+      root.right.right = new Node(60);
+      
+      int key =80;
+      ArrayList<Integer> ans = new ArrayList<>();
+      
+      boolean check = nthnodepath(root,ans,key);
+      
+      if(check)
+      {
+          for(var v:ans)
+          {
+              System.out.print(v+",");
+          }
+      }
+      else
+      {
+          System.out.print(check);
+      }
+  }
+  
+  public static boolean nthnodepath(Node root,ArrayList<Integer> ans,int key){
+      
+      
+      if(root == null)
+      {
+          return false;
+      }
+      
+      if(root.val == key)
+      {
+          ans.add(root.val);
+          return true;
+      }
+      
+     boolean check_left= nthnodepath(root.left, ans,key);
+     if(check_left)
+     {
+         ans.add(root.val);
+         return true;
+     }
+     
+     boolean check_right= nthnodepath(root.right, ans,key);
+          if(check_right)
+     {
+         ans.add(root.val);
+         return true;
+     }
+     
+     return false;
+     
+  }
+}
+      
